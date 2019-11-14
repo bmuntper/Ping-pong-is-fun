@@ -13,19 +13,19 @@
 
 
 const service = (score) => {
-  let arr = score.split(':')
-  let total = parseInt(arr[0])+parseInt(arr[1])
-  let gap = Math.abs(parseInt(arr[0])-parseInt(arr[1]))
-  if ((gap>=2)&&(arr[0]>=21 ||arr[1]>=21 ) )return 'finished'
-  if ( parseInt(arr[0] )> 19 && parseInt(arr[1]) >19) {
+  let [first, second] = score.split(':')
+  first = parseInt(first)
+  second = parseInt(second)
+  let total = first + second
+  let gap = Math.abs(first-second)
 
-      if (parseInt(arr[0] )> parseInt(arr[1])) return 'second'
-      else return 'first'
+  if ((gap>=2)&&(first>=21 || second >=21 ) ) return 'finished'
+
+  if ( first > 19 && second > 19) {
+      return first > second ? 'second':'first'
   }
-  
-  console.log(total);
-  if (total%2 === 0) return 'first';
-  else return 'second'
+
+  return (total%2 === 0) ? 'first': 'second'
 };
 
 module.exports = service;
